@@ -1,4 +1,3 @@
-
 const express = require ("express");
 const dotenv  = require ("dotenv");
 const routerDestinatario = require ("./src/modules/destinatario/routes/destinatario.rout");

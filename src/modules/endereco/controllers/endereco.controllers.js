@@ -17,11 +17,11 @@ class EnderecoController{
         try {
             // http://localhost:3000/endereco/a1234
             const id = requisicao.params
-            const {cep, logradouro, numero,  bairro, localidade, uf } = requisicao.body
-            if(!cep || !logradouro|| !numero || ! bairro || ! localidade || !uf){
+            const {cep, numero } = requisicao.body
+            if(!cep || !numero){
                 return resposta.status(400).json({mensagem: 'Todos os campos devem ser fornecidos!'})
             }
-            const endereco = await EnderecoModel.editarEndereco(cep, logradouro, numero,  bairro, localidade, uf  )
+            const endereco = await EnderecoModel.editarEndereco(cep, numero)
             if(endereco.length === 0){
                 return resposta.status(404).json({mensagem: 'Endereço não encontrado!'})
             }

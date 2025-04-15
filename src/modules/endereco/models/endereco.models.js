@@ -52,7 +52,7 @@ class EnderecoModel{
     }
     static async listarEnderecoCidade(cidade){
         const dados = [`%${cidade}%`]
-        const consulta = `select * from endereco where (localidade) lower like lower($1)`
+        const consulta = `select * from endereco where lower(localidade) like lower($1)`
         const resultado = await pool.query(consulta, dados)
         return resultado.rows
     }
